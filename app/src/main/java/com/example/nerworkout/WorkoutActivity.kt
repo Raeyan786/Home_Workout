@@ -19,8 +19,12 @@ import android.view.View
 import android.widget.Button
 import android.widget.RemoteViews
 import android.widget.TextView
+import androidx.core.app.NotificationCompat
 import android.widget.VideoView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.nerworkout.R.drawable.*
+
+//import androidx.media.app.NotificationCompat
 
 class WorkoutActivity : AppCompatActivity() {
     data class WorkoutClass(var exercises: MutableList<String>, var exerciseTimes: MutableList<Int>, var exerciseVideos: MutableList<Uri>)  //class template for any workout
@@ -30,74 +34,74 @@ class WorkoutActivity : AppCompatActivity() {
         mutableListOf("SQUATS", "HIGH KNEES", "REST", "LUNGES", "HIP BRIDGES", "REST", "SQUATS", "HIGH KNEES", "REST", "LUNGES", "HIP BRIDGES"),
         mutableListOf(30000, 30000, 30000, 30000, 30000, 30000, 30000, 30000, 30000, 30000, 30000),
         mutableListOf(
-            Uri.parse("android.resource://com.example.sampleapp/raw/squats"), Uri.parse("android.resource://com.example.sampleapp/raw/high_knees"),
-            Uri.parse("android.resource://com.example.sampleapp/raw/rest"), Uri.parse("android.resource://com.example.sampleapp/raw/lunge"),
-            Uri.parse("android.resource://com.example.sampleapp/raw/hip_bridge"), Uri.parse("android.resource://com.example.sampleapp/raw/rest"),
-            Uri.parse("android.resource://com.example.sampleapp/raw/squats"), Uri.parse("android.resource://com.example.sampleapp/raw/high_knees"),
-            Uri.parse("android.resource://com.example.sampleapp/raw/rest"), Uri.parse("android.resource://com.example.sampleapp/raw/lunge"),
-            Uri.parse("android.resource://com.example.sampleapp/raw/hip_bridge"))
+            Uri.parse("android.resource://com.example.nerworkout/raw/squats"), Uri.parse("android.resource://com.example.nerworkout/raw/high_knees"),
+            Uri.parse("android.resource://com.example.nerworkout/raw/rest"), Uri.parse("android.resource://com.example.nerworkout/raw/lunge"),
+            Uri.parse("android.resource://com.example.nerworkout/raw/hip_bridge"), Uri.parse("android.resource://com.example.nerworkout/raw/rest"),
+            Uri.parse("android.resource://com.example.nerworkout/raw/squats"), Uri.parse("android.resource://com.example.nerworkout/raw/high_knees"),
+            Uri.parse("android.resource://com.example.nerworkout/raw/rest"), Uri.parse("android.resource://com.example.nerworkout/raw/lunge"),
+            Uri.parse("android.resource://com.example.nerworkout/raw/hip_bridge"))
     )
     private val shouldersWorkout: WorkoutClass = WorkoutClass(
         mutableListOf("PIKE PUSH-UPS", "ARM SCISSORS", "Y RAISES", "REVERSE IRON CROSS PUSH-UPS", "DOOR FRAME HOLDS"),
         mutableListOf(60000, 60000, 60000, 60000, 60000),
         mutableListOf(
-            Uri.parse("android.resource://com.example.sampleapp/raw/pike_pushups"), Uri.parse("android.resource://com.example.sampleapp/raw/arm_scissors"),
-            Uri.parse("android.resource://com.example.sampleapp/raw/y_raises"), Uri.parse("android.resource://com.example.sampleapp/raw/iron_cross"),
-            Uri.parse("android.resource://com.example.sampleapp/raw/door_frame_hold"))
+            Uri.parse("android.resource://com.example.nerworkout/raw/pike_pushups"), Uri.parse("android.resource://com.example.nerworkout/raw/arm_scissors"),
+            Uri.parse("android.resource://com.example.nerworkout/raw/y_raises"), Uri.parse("android.resource://com.example.nerworkout/raw/iron_cross"),
+            Uri.parse("android.resource://com.example.nerworkout/raw/door_frame_hold"))
     )
     private val chestWorkout: WorkoutClass = WorkoutClass(
         mutableListOf("DIAMOND PUSH-UPS", "NORMAL PUSH-UPS", "REST", "TRICEP DIPS", "WIDE PUSH-UPS", "REST", "DIAMOND PUSH-UPS", "NORMAL PUSH-UPS", "REST", "TRICEP DIPS", "WIDE PUSH-UPS"),
         mutableListOf(30000, 30000, 30000, 30000, 30000, 30000, 20000, 20000, 25000, 20000, 20000),
         mutableListOf(
-            Uri.parse("android.resource://com.example.sampleapp/raw/diamond_pushup"), Uri.parse("android.resource://com.example.sampleapp/raw/normal_pushup"),
-            Uri.parse("android.resource://com.example.sampleapp/raw/rest"), Uri.parse("android.resource://com.example.sampleapp/raw/tricep_dips"),
-            Uri.parse("android.resource://com.example.sampleapp/raw/wide_pushups"), Uri.parse("android.resource://com.example.sampleapp/raw/rest"),
-            Uri.parse("android.resource://com.example.sampleapp/raw/diamond_pushup"), Uri.parse("android.resource://com.example.sampleapp/raw/normal_pushup"),
-            Uri.parse("android.resource://com.example.sampleapp/raw/rest"), Uri.parse("android.resource://com.example.sampleapp/raw/tricep_dips"),
-            Uri.parse("android.resource://com.example.sampleapp/raw/wide_pushups"))
+            Uri.parse("android.resource://com.example.nerworkout/raw/diamond_pushup"), Uri.parse("android.resource://com.example.nerworkout/raw/normal_pushup"),
+            Uri.parse("android.resource://com.example.nerworkout/raw/rest"), Uri.parse("android.resource://com.example.nerworkout/raw/tricep_dips"),
+            Uri.parse("android.resource://com.example.nerworkout/raw/wide_pushups"), Uri.parse("android.resource://com.example.nerworkout/raw/rest"),
+            Uri.parse("android.resource://com.example.nerworkout/raw/diamond_pushup"), Uri.parse("android.resource://com.example.nerworkout/raw/normal_pushup"),
+            Uri.parse("android.resource://com.example.nerworkout/raw/rest"), Uri.parse("android.resource://com.example.nerworkout/raw/tricep_dips"),
+            Uri.parse("android.resource://com.example.nerworkout/raw/wide_pushups"))
     )
     private val bicepsWorkout: WorkoutClass = WorkoutClass(
         mutableListOf("LEFT ARM PUSH CURL", "LEFT ARM PUSH HAMMER CURL", "LEFT ARM PUSH REVERSE CURL", "LEFT ARM PUSH HIGH CURL",
             "RIGHT ARM PUSH CURL", "RIGHT ARM PUSH HAMMER CURL", "RIGHT ARM PUSH REVERSE CURL", "RIGHT ARM PUSH HIGH CURL", "PUSH UPRIGHT CURL"),
         mutableListOf(30000, 30000, 30000, 30000, 30000, 30000, 30000, 30000, 60000),
         mutableListOf(
-            Uri.parse("android.resource://com.example.sampleapp/raw/one_arm_push_curl"), Uri.parse("android.resource://com.example.sampleapp/raw/one_arm_push_hammer_curl"),
-            Uri.parse("android.resource://com.example.sampleapp/raw/one_arm_push_reverse_curl"), Uri.parse("android.resource://com.example.sampleapp/raw/one_arm_push_high_curl"),
-            Uri.parse("android.resource://com.example.sampleapp/raw/one_arm_push_curl"), Uri.parse("android.resource://com.example.sampleapp/raw/one_arm_push_hammer_curl"),
-            Uri.parse("android.resource://com.example.sampleapp/raw/one_arm_push_reverse_curl"), Uri.parse("android.resource://com.example.sampleapp/raw/one_arm_push_high_curl"),
-            Uri.parse("android.resource://com.example.sampleapp/raw/push_upright_curl"))
+            Uri.parse("android.resource://com.example.nerworkout/raw/one_arm_push_curl"), Uri.parse("android.resource://com.example.nerworkout/raw/one_arm_push_hammer_curl"),
+            Uri.parse("android.resource://com.example.nerworkout/raw/one_arm_push_reverse_curl"), Uri.parse("android.resource://com.example.nerworkout/raw/one_arm_push_high_curl"),
+            Uri.parse("android.resource://com.example.nerworkout/raw/one_arm_push_curl"), Uri.parse("android.resource://com.example.nerworkout/raw/one_arm_push_hammer_curl"),
+            Uri.parse("android.resource://com.example.nerworkout/raw/one_arm_push_reverse_curl"), Uri.parse("android.resource://com.example.nerworkout/raw/one_arm_push_high_curl"),
+            Uri.parse("android.resource://com.example.nerworkout/raw/push_upright_curl"))
     )
     private val backWorkout: WorkoutClass = WorkoutClass(
         mutableListOf("BACK EXTENSIONS", "REST", "BACK HYPEREXTENSIONS", "REST", "PULSE ROWS", "REST", "SUPERMANS", "REST", "REACHERS"),
         mutableListOf(30000, 10000, 30000, 10000, 30000, 10000, 30000, 10000, 30000),
         mutableListOf(
-            Uri.parse("android.resource://com.example.sampleapp/raw/back_extension"), Uri.parse("android.resource://com.example.sampleapp/raw/rest"),
-            Uri.parse("android.resource://com.example.sampleapp/raw/back_hyperextension"), Uri.parse("android.resource://com.example.sampleapp/raw/rest"),
-            Uri.parse("android.resource://com.example.sampleapp/raw/pulse_rows"), Uri.parse("android.resource://com.example.sampleapp/raw/rest"),
-            Uri.parse("android.resource://com.example.sampleapp/raw/supermans"), Uri.parse("android.resource://com.example.sampleapp/raw/rest"),
-            Uri.parse("android.resource://com.example.sampleapp/raw/reachers"))
+            Uri.parse("android.resource://com.example.nerworkout/raw/back_extension"), Uri.parse("android.resource://com.example.nerworkout/raw/rest"),
+            Uri.parse("android.resource://com.example.nerworkout/raw/back_hyperextension"), Uri.parse("android.resource://com.example.nerworkout/raw/rest"),
+            Uri.parse("android.resource://com.example.nerworkout/raw/pulse_rows"), Uri.parse("android.resource://com.example.nerworkout/raw/rest"),
+            Uri.parse("android.resource://com.example.nerworkout/raw/supermans"), Uri.parse("android.resource://com.example.nerworkout/raw/rest"),
+            Uri.parse("android.resource://com.example.nerworkout/raw/reachers"))
     )
     private val tricepsWorkout: WorkoutClass = WorkoutClass(
         mutableListOf("TRICEP EXTENSIONS", "REST", "DIAMOND PUSH-UPS", "REST", "WALK OUT PUSH-UPS", "REST", "TRICEP DIPS"),
         mutableListOf(20000, 10000, 20000, 10000, 20000, 10000, 20000),
         mutableListOf(
-            Uri.parse("android.resource://com.example.sampleapp/raw/tricep_extensions"), Uri.parse("android.resource://com.example.sampleapp/raw/rest"),
-            Uri.parse("android.resource://com.example.sampleapp/raw/diamond_pushup"), Uri.parse("android.resource://com.example.sampleapp/raw/rest"),
-            Uri.parse("android.resource://com.example.sampleapp/raw/walkout_pushups"), Uri.parse("android.resource://com.example.sampleapp/raw/rest"),
-            Uri.parse("android.resource://com.example.sampleapp/raw/tricep_dips"))
+            Uri.parse("android.resource://com.example.nerworkout/raw/tricep_extensions"), Uri.parse("android.resource://com.example.nerworkout/raw/rest"),
+            Uri.parse("android.resource://com.example.nerworkout/raw/diamond_pushup"), Uri.parse("android.resource://com.example.nerworkout/raw/rest"),
+            Uri.parse("android.resource://com.example.nerworkout/raw/walkout_pushups"), Uri.parse("android.resource://com.example.nerworkout/raw/rest"),
+            Uri.parse("android.resource://com.example.nerworkout/raw/tricep_dips"))
     )
     private val absWorkout: WorkoutClass = WorkoutClass(
         mutableListOf("NORMAL CRUNCHES", "PLANK", "LYING KNEE TUCKS", "LEG UP CRUNCHES"),
         mutableListOf(30000, 90000, 30000, 30000),
         mutableListOf(
-            Uri.parse("android.resource://com.example.sampleapp/raw/crunches"), Uri.parse("android.resource://com.example.sampleapp/raw/plank"),
-            Uri.parse("android.resource://com.example.sampleapp/raw/lying_knee_tucks"), Uri.parse("android.resource://com.example.sampleapp/raw/leg_up_crunches"))
+            Uri.parse("android.resource://com.example.nerworkout/raw/crunches"), Uri.parse("android.resource://com.example.nerworkout/raw/plank"),
+            Uri.parse("android.resource://com.example.nerworkout/raw/lying_knee_tucks"), Uri.parse("android.resource://com.example.nerworkout/raw/leg_up_crunches"))
     )
 
     //Notification variables
     lateinit var notificationManager : NotificationManager
     lateinit var notificationChannel : NotificationChannel
-    lateinit var builder : Notification.Builder
+    lateinit var builder : NotificationCompat.Builder
     private val channelID = "com.example.nerworkout"
     private val description = "Quarantine workout notification"
 
@@ -250,7 +254,7 @@ class WorkoutActivity : AppCompatActivity() {
                     newWorkout.exerciseTimes.addAll(currentWorkout.exerciseTimes)
 
                     //Add rest video and next set's exercise videos
-                    newWorkout.exerciseVideos.add(Uri.parse("android.resource://com.example.sampleapp/raw/rest"))
+                    newWorkout.exerciseVideos.add(Uri.parse("android.resource://com.example.nerworkout/raw/rest"))
                     newWorkout.exerciseVideos.addAll(currentWorkout.exerciseVideos)
                 }
                 //Start new workout (selected workout done setNumber times)
@@ -338,7 +342,7 @@ class WorkoutActivity : AppCompatActivity() {
         }
 
         val contentView = RemoteViews(packageName, R.layout.notificationlayout)
-        contentView.setTextViewText(R.id.notificationTitle, "Quarantine Workout")
+        contentView.setTextViewText(R.id.notificationTitle, "Home Workout")
 
         cdt = object : CountDownTimer(adjustedExerciseTime.toLong(), 1000) //Start decreasing the adjusted time by 1 second until it hits 0
         {
@@ -393,16 +397,18 @@ class WorkoutActivity : AppCompatActivity() {
                         notificationChannel.enableVibration(false)
                         notificationManager.createNotificationChannel(notificationChannel)
 
-                        builder = Notification.Builder(this@WorkoutActivity, channelID)
+                        builder = NotificationCompat.Builder(this@WorkoutActivity, channelID)
                             .setContent(contentView)
-                            .setSmallIcon(R.drawable.notification_image)
+                            //.setCustomContentView(contentView)
+                            .setSmallIcon(notification_image)
                             .setLargeIcon(BitmapFactory.decodeResource(this@WorkoutActivity.resources,  R.mipmap.ic_launcher))
                     }
                     else
                     {
-                        builder = Notification.Builder(this@WorkoutActivity)
+                        builder = NotificationCompat.Builder(this@WorkoutActivity , channelID)
                             .setContent(contentView)
-                            .setSmallIcon(R.drawable.notification_image)
+                            //.setCustomContentView(contentView)
+                            .setSmallIcon(notification_image)
                             .setLargeIcon(BitmapFactory.decodeResource(this@WorkoutActivity.resources,  R.mipmap.ic_launcher))
                     }
 

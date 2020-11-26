@@ -9,7 +9,45 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".diet.SunDietOW" android:parentActivityName=".diet.OverWeight"></activity>
+        <activity android:name=".diet.SatDietOW" android:parentActivityName=".diet.OverWeight" />
+        <activity android:name=".diet.FriDietOW" android:parentActivityName=".diet.OverWeight" />
+        <activity android:name=".diet.ThuDietOW" android:parentActivityName=".diet.OverWeight" />
+        <activity android:name=".diet.WedDietOW" android:parentActivityName=".diet.OverWeight" />
+        <activity android:name=".diet.TueDietOW" android:parentActivityName=".diet.OverWeight" />
+        <activity android:name=".diet.MonDietOW" android:parentActivityName="diet.OverWeight" />
+        <activity
+            android:name=".diet.SunDietUW"
+            android:parentActivityName=".diet.UnderWeight" />
+        <activity
+            android:name=".diet.SatDietUW"
+            android:parentActivityName=".diet.UnderWeight" />
+        <activity
+            android:name=".diet.FriDietUW"
+            android:parentActivityName=".diet.UnderWeight" />
+        <activity
+            android:name=".diet.ThuDietUW"
+            android:parentActivityName=".diet.UnderWeight" />
+        <activity
+            android:name=".diet.WedDietUW"
+            android:parentActivityName=".diet.UnderWeight" />
+        <activity
+            android:name=".diet.MonDietUW"
+            android:parentActivityName=".diet.UnderWeight" />
+        <activity
+            android:name=".diet.TueDietUW"
+            android:parentActivityName=".diet.UnderWeight" />
+        <activity
+            android:name=".diet.OverWeight"
+            android:parentActivityName="MainActivity" />
+        <activity
+            android:name=".diet.UnderWeight"
+            android:parentActivityName="MainActivity"
+            />
+        <activity android:name=".diet.BMI"
+            android:parentActivityName="MainActivity"/>
+        <activity android:name=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".WorkoutActivity"></activity>
         <activity android:name=".Workout1Activity"></activity>
         <activity android:name=".MaleActivity">
@@ -22,6 +60,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service android:name=".OnAppKillService" android:stopWithTask="false" />
     </application>
 
 </manifest>

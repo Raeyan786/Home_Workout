@@ -22,7 +22,7 @@
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="wrap_content"
-                android:layout_height="211dp"
+                android:layout_height="214dp"
                 android:layout_margin="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
@@ -32,7 +32,7 @@
                 android:layout_marginBottom="8dp"
                 android:onClick="startWorkout"
                 android:tag="legs"
-                app:srcCompat="@drawable/leg1" />
+                app:srcCompat="@drawable/leg3" />
 
         </androidx.cardview.widget.CardView>
 
@@ -47,7 +47,7 @@
             <ImageView
                 android:id="@+id/imageView1"
                 android:layout_width="wrap_content"
-                android:layout_height="272dp"
+                android:layout_height="256dp"
                 android:layout_margin="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
@@ -197,7 +197,7 @@
                 android:layout_marginBottom="8dp"
                 android:onClick="startWorkout"
                 android:tag="abs"
-                app:srcCompat="@drawable/front1" />
+                app:srcCompat="@drawable/abs1" />
 
         </androidx.cardview.widget.CardView>
 
